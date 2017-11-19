@@ -17,9 +17,10 @@ animals.forEach(function(each) {
 $('#submit').on('click', function() {
 	// console.log('clicked!!');
 	//grab text from the input field and add it to the array
-	var newAnimal = $('#input').value;
-	console.log(newAnimal);
-
+	var newAnimal = $('#input').val();
+	// console.log(newAnimal);
+	animals.push(newAnimal);
+	console.log(animals);
 });
 
 

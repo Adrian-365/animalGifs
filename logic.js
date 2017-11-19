@@ -1,4 +1,4 @@
-var animals = ['lion', 'tiger', 'bear', 'wolf', 'crockodile', 'hippo', 'giraffe', 'bison', 'elk', 'quail', 'deer', 'panther', 'mountain lion' ];
+var animals = ['lion', 'tiger', 'bear', 'wolf', 'crocodile', 'hippo', 'giraffe', 'bison', 'elk', 'quail', 'deer', 'panther', 'mountain lion' ];
 
 $(document).ready(function () {
   //your code here
@@ -17,9 +17,9 @@ animals.forEach(function(each) {
 //event listener for "submit" button
 $('#submit').on('click', function(event) {
 	event.preventDefault();
-	// console.log('clicked!!');
-	//grab text from the input field 
-	var newAnimal = $('#input').val();
+
+	//grab text from input field and put it in a var
+	var newAnimal = $('#input').val().trim();
 	console.log(newAnimal);
 	//add text from the input field to the array
 	animals.push(newAnimal);
@@ -39,27 +39,37 @@ $('#submit').on('click', function(event) {
 $('.animal-button').on('click', function() {
 	//grab the data value from the button and put it in a variable
 	var thisAnimal = $(this).data('animal');
-	//console.log only works for original buttons not for new.??
+	//the data attribute is only working or the original buttons not for new.??
 	console.log(thisAnimal);
 	//create url variable
-	var queryUrl = 'http://api.giphy.com/v1/gifs/search?q=' + thisAnimal + '&api_key=GVCTd0mGVPvvKq31RpOcdnKSIexmVIDU&limit=1';
+	var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + thisAnimal + '&api_key=GVCTd0mGVPvvKq31RpOcdnKSIexmVIDU&limit=9';
 
 	//ajax call get/then
 	$.ajax({
-		url: queryUrl,
+		url: queryURL,
 		method: "GET"
 	}).then(function(response) {
-		console.log(response);
+		console.log(response.data);
+	
 	// clear existing gifs, 
 	$('#gifs').empty();
 
-	
+	//create the div, add the image and append to the DOM
+	for (i = 0; i < response.data.length; i++) {
 
-	// //then populate a 10 gifs with their g/pg rating
-	// var picDiv = $('<img>');
-	// picDiv.addClass('col-xs-6 col-md-3 thumbnail');
-	// picDiv.addSrc('');
+		var gifDiv = $('<div style="padding: 10px">');
 
+		var gifImg = $('<img>').attr('src', response.data[i].images.downsized_still.url);	
+		gifImg.attr('data-still', response.data[i].images.downsized_still.url);
+		gifImg.attr('data-animate', response.data[i].images.downsized.url);
+		gifImg.attr('data-state', still);
+
+		gifDiv.append("<p>Rating: "+response.data[i].rating+"</p>");
+		gifDiv.append(gifImg);
+
+		$('#gifs').append(gifDiv);
+
+		};
 
 		
 	//include click start and stop using data-

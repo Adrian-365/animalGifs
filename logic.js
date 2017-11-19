@@ -39,7 +39,14 @@ $('.animal-button').on('click', function() {
 	//grab the data value from the button and put it in a variable
 	var thisAnimal = $(this).data('animal');
 	console.log(thisAnimal);
-	//
+	//create url variable
+
+	//ajax call get
+
+	//ajax .then to clear existing gifs, 
+
+	//then populate a 10 gifs with their g/pg rating
+	//include click start and stop using data-
 
 
 

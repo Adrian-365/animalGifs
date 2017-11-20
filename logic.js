@@ -1,4 +1,5 @@
-/// The bison is highly recommended....
+// The bison is highly recommended....
+// I couldn't get the images to flow across, only down
 
 var animals = ['lion', 'tiger', 'bear', 'wolf', 'crocodile', 'hippo', 'giraffe', 'bison', 'elk', 'quail', 'deer', 'panther', 'mountain lion'];
 

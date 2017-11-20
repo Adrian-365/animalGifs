@@ -6,6 +6,11 @@ var animals = ['lion', 'tiger', 'bear', 'wolf', 'crocodile', 'hippo', 'giraffe',
 $(document).ready(function() {
     //your code here
 
+
+//a function to render buttons from the array
+function render() {
+
+    $('#buttons').empty();
     //build buttons from the array:
     animals.forEach(function(each) {
         // console.log(each);
@@ -16,6 +21,7 @@ $(document).ready(function() {
         //add the buttons to the DOM
         $('#buttons').append(b);
     });
+};
 
     //event listener for "submit" button
     $('#submit').on('click', function(event) {
@@ -23,17 +29,12 @@ $(document).ready(function() {
 
         //grab text from input field and put it in a var
         var newAnimal = $('#input').val().trim();
-        console.log(newAnimal);
-        //add text from the input field to the array
+        // console.log(newAnimal);
+        //add var into the array
         animals.push(newAnimal);
         // console.log(animals);
         //create the new animal button
-        var c = $('<button>');
-        c.addClass('animal-button btn btn-success btn-lg');
-        c.attr('data-animal', newAnimal);
-        c.text(newAnimal);
-        //add the new animal button to the DOM
-        $('#buttons').append(c);
+        render();
     });
 
 
@@ -56,7 +57,7 @@ $(document).ready(function() {
             // clear existing gifs, 
             $('#gifs').empty();
 
-            //create the div, add the image and append to the DOM
+            //create the div, add the images (still and animated), state and rating
             for (i = 0; i < response.data.length; i++) {
 
                 var gifDiv = $('<div style="padding: 10px">');
@@ -70,7 +71,7 @@ $(document).ready(function() {
                
                 gifDiv.append("<p>Rating: " + response.data[i].rating + "</p>");
                 gifDiv.append(gifImg);
-
+                //append to the DOM
                 $('#gifs').append(gifDiv);
 
             };
@@ -83,7 +84,7 @@ $(document).ready(function() {
 
 
 
-    //include click start and stop using data-
+    //include click start and stop using data-state
 
     $(document).on("click", "img", function() {
        
@@ -102,8 +103,8 @@ $(document).ready(function() {
         }
     });
 
-
-
+//call the render function for the inital load
+render();
 
 
     //end dcoument.ready function

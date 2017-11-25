@@ -35,6 +35,7 @@ function render() {
         // console.log(animals);
         //create the new animal button
         render();
+        $('#input').val('');
     });
 
 

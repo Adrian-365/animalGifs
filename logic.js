@@ -46,7 +46,7 @@ function render() {
         //the data attribute is only working or the original buttons not for new.??
         console.log(thisAnimal);
         //create url variable
-        var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + thisAnimal + '&api_key=GVCTd0mGVPvvKq31RpOcdnKSIexmVIDU&limit=9';
+        var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + thisAnimal + '&api_key=GVCTd0mGVPvvKq31RpOcdnKSIexmVIDU&limit=9';
 
         //ajax call get/then
         $.ajax({
